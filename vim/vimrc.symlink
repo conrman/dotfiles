@@ -389,7 +389,7 @@ if has('nvim')
 
   " Make a terminal split
   command! -nargs=* Spt :sp term://zsh
-  command! -nargs=* Vsp vsp term://zsh
+  command! -nargs=* Vspt vsp term://zsh
 endif
 
 
