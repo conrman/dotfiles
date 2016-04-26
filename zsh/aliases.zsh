@@ -2,6 +2,7 @@ alias reload!='. ~/.zshrc'
 
 alias vu='vagrant up'
 alias vh='vagrant halt'
+alias vr='vagrant reload'
 alias vs='vagrant status'
 alias vp='vagrant provision'
 
