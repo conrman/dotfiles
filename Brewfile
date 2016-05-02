@@ -26,6 +26,7 @@ brew 'unrar'
 brew 'wget'
 brew 'weechat'
 brew 'youtube-dl'
+brew 'git-flow'
 
 cask '1password'
 cask 'firefox'
