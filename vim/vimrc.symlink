@@ -27,6 +27,8 @@ Plug 'https://github.com/tpope/vim-vinegar'
 Plug 'https://github.com/tpope/vim-abolish'
 Plug 'https://github.com/tpope/vim-unimpaired'
 Plug 'https://github.com/tpope/vim-repeat'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
@@ -59,6 +61,8 @@ set mouse=a       " Enable mouse
 set ruler         " Show the cursor position all the time
 set showcmd       " Display incomplete commands
 set scrolloff=8   " Keep cursor away from top/bottom edge of window
+set sidescroll=1
+set sidescrolloff=8
 
 
 " Set current working directory to match the buffer
@@ -155,6 +159,9 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 
 " ====== Configurations ======
+
+" Setup github account config for webapi-vim
+let g:gist_use_password_in_gitconfig = 1
 
 
 " Allow JSX in normal js files
