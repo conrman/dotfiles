@@ -1,5 +1,12 @@
 alias reload!='. ~/.zshrc'
 
+alias .='cd ..'
+alias ..='cd ../..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
+alias ......='cd ../../../../../..'
+
 alias vu='vagrant up'
 alias vh='vagrant halt'
 alias vr='vagrant reload'
