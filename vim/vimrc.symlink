@@ -63,8 +63,10 @@ vnoremap // :TComment<CR>
 " ================ Line Numbers ================
 
 set number
-set relativenumber
 set numberwidth=5
+set relativenumber
+set cursorline        " Highlight current line
+
 
 
 " ================ Search ================
@@ -131,6 +133,50 @@ imap jf <esc>
 imap jj <esc>
 
 
+" ================ Completion ================
+
+set wildmode=list:longest
+set wildmenu                      "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+
+
+" ================ Saving ================
+
+" Save on [enter]
+function! s:RemapEnter()
+   if empty(&buftype)
+      nnoremap <buffer> <CR> :w<CR>
+   else
+      silent! nunmap <buffer> <CR>
+   end
+endf
+autocmd BufReadPost * call s:RemapEnter()
+
+
 " ================ Plugins ================
 
 call plug#begin('~/.vim/autoload')
@@ -175,49 +221,6 @@ call plug#end()
 " Setup github account config for webapi-vim
 let g:gist_use_password_in_gitconfig = 1
 
-
-" ================ Completion ================
-
-set wildmode=list:longest
-set wildmenu                      "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
-
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
-
-
-" ================ Saving ================
-
-" Save on [enter]
-function! s:RemapEnter()
-   if empty(&buftype)
-      nnoremap <buffer> <CR> :w<CR>
-   else
-      silent! nunmap <buffer> <CR>
-   end
-endf
-autocmd BufReadPost * call s:RemapEnter()
 
 
 
@@ -418,6 +421,10 @@ endif
 let base16colorspace=256
 set background=dark
 colorscheme base16-eighties
+
+" Set line number number colors
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight CursorLineNr ctermfg=White
 
 
 " ================ Local overwrites  ================
