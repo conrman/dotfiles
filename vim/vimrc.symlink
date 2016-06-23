@@ -1,7 +1,137 @@
-" Leader
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+
+" ================ General Config ================
+
 let mapleader = "\\"
 
-" ===== Plugins =====
+syntax on
+set autochdir         " Change working directory to match open buffer
+set autowrite         " Automatically :write before running commands
+set backspace=2       " Backspace deletes like most programs in insert mode
+set hidden            " No need to overwrite!
+set history=100       " Keep more info in memory
+set laststatus=2      " Always display the status line
+set nowrap            " No wrapping text
+set mouse=a           " Enable mouse
+set ruler             " Show the cursor position all the time
+set visualbell        " No sounds
+set noea              " I can resize splits my damn self
+
+
+" ================ Backups/Swaps ================
+
+set nobackup          " Don't forget to save!
+set noswapfile        " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set nowritebackup     " Don't make a backup before overwriting a file
+
+
+" ================ Scrolling ================
+
+set scrolloff=8       " Keep cursor away from top/bottom edge of window
+set sidescroll=1      " Amount to scroll horizontally when going off the screen
+set sidescrolloff=8   " Keep cursor away from left/right edge of window
+
+
+" ================ Command Prompt ================
+
+set showcmd           " Display incomplete commands
+
+" Set the command window height to 2 lines,
+" to avoid many cases of having to
+" "press <Enter> to continue"
+set cmdheight=2
+
+
+" ================ Mappings  ================
+
+" Quit like a winner
+nnoremap <leader>q :q<CR>
+
+" Delete without yanking to register
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+vnoremap <leader>p "_dP
+
+" Easy commenting
+nnoremap // :TComment<CR>
+vnoremap // :TComment<CR>
+
+
+" ================ Line Numbers ================
+
+set number
+set relativenumber
+set numberwidth=5
+
+
+" ================ Search ================
+
+set hlsearch          " Better search
+set incsearch         " Do incremental searching
+set ignorecase        " Ignore case when searching...
+set smartcase         " ...unless we type a captial
+
+" Clear hightlights
+nnoremap <F3> :set hlsearch!<CR>
+
+
+" ================ Buffers ================
+
+" Show bufferlist
+nnoremap <leader>b :ls<CR>:b<space>
+
+" Set current working directory to match the buffer
+autocmd BufEnter * silent! lcd %:p:h
+
+" Remove whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+
+" ================ Indentation ================
+
+filetype plugin indent on
+set cindent
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+
+" ================ Splits ================
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+set diffopt+=vertical " Always use vertical diffs
+
+
+" ================ Movement ================
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" Exit insert mode center stage
+imap fj <esc>
+imap jf <esc>
+imap jj <esc>
+
+
+" ================ Plugins ================
 
 call plug#begin('~/.vim/autoload')
 
@@ -10,7 +140,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-scripts/tComment'
 Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/majutsushi/tagbar.git'
@@ -38,139 +167,29 @@ if has('nvim')
   Plug 'dylanaraps/taskrunner.nvim'
 endif
 
-
 call plug#end()
 
 
-" ===== Setup =====
-
-syntax on
-set autochdir     " Change working directory to match open buffer
-set autowrite     " Automatically :write before running commands
-set backspace=2   " Backspace deletes like most programs in insert mode
-set hidden
-set history=100   " Keep more info in memory
-set hlsearch      " Better search
-set incsearch     " Do incremental searching
-set laststatus=2  " Always display the status line
-set nobackup      "
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set nowritebackup "
-set nowrap
-set mouse=a       " Enable mouse
-set ruler         " Show the cursor position all the time
-set showcmd       " Display incomplete commands
-set scrolloff=8   " Keep cursor away from top/bottom edge of window
-set sidescroll=1
-set sidescrolloff=8
-
-
-" Set current working directory to match the buffer
-autocmd BufEnter * silent! lcd %:p:h
-
-
-" Remove whitespaces on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-
-" Indentation
-set cindent
-filetype plugin indent on
-
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
-
-" Make it obvious where 80 characters is
-" set textwidth=80
-
-
-" Numbers
-set number
-set relativenumber
-set numberwidth=5
-
-
-" Always use vertical diffs
-set diffopt+=vertical
-
-
-
-" ===== Remaps ======
-
-
-" Cancel search with Esc
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
-
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-
-" Exit insert mode center stage
-imap fj <esc>
-imap jf <esc>
-
-
-" Show bufferlist
-nnoremap <leader>b :ls<CR>:b<space>
-
-
-" Clear hightlights
-nnoremap <F3> :set hlsearch!<CR>
-
-
-" Delete without yanking
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-vnoremap <leader>p "_dP
-
-
-" Quit like a winner
-nnoremap <leader>q :q<CR>
-
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
-
-" Easy commenting
-nnoremap // :TComment<CR>
-vnoremap // :TComment<CR>
-
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-
-" ====== Configurations ======
+" ================ Gist ================
 
 " Setup github account config for webapi-vim
 let g:gist_use_password_in_gitconfig = 1
 
 
-" Allow JSX in normal js files
-" let g:jsx_ext_required = 0
+" ================ Completion ================
 
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
-set cmdheight=2
-
+set wildmode=list:longest
+set wildmenu                      "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -188,7 +207,9 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
 
 
-" Save on Enter
+" ================ Saving ================
+
+" Save on [enter]
 function! s:RemapEnter()
    if empty(&buftype)
       nnoremap <buffer> <CR> :w<CR>
@@ -200,15 +221,9 @@ autocmd BufReadPost * call s:RemapEnter()
 
 
 
-" ====== NERDTree ======
-nmap <leader>r :NERDTreeToggle<CR>
-map <leader>f :NERDTreeFind<CR>
+" ================ Tagbar ================
 
-" Close vim when a file is closed and NERDTree is the last open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-
-" ====== Tagbar ======
+" Open tagbar panel
 nmap <leader>t :TagbarToggle<CR>
 
 let g:tagbar_status_func = 'TagbarStatusFunc'
@@ -228,7 +243,7 @@ let g:tagbar_type_css = {
       \ }
 
 
-" ======== Syntastic settings ========
+" ================ Syntastic  ================
 
 " Set checkers for syntastic:
 " let g:syntastic_javascript_checkers = ['eslint', 'jshint']
@@ -241,13 +256,15 @@ let g:tagbar_type_css = {
 " let g:syntastic_eruby_ruby_quiet_messages = {"regex": "possibly useless use of a variable in void context"}
 
 
-" ===== Emmet =====
+" ================ Emmet ================
+
 let g:user_emmet_mode='a'
 " let g:user_emmet_install_global = 0
 " autocmd FileType html,css EmmetInstall
 
 
-" ===== Lightline =====
+" ================ Lightline ================
+
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -384,13 +401,8 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
+" ================ NeoVim ================
 
-
-" NeoVim specific
 if has('nvim')
   " Exit terminal mode.
   tnoremap <leader>e <C-\><C-n>
@@ -401,7 +413,15 @@ if has('nvim')
 endif
 
 
-" Color Scheme
+" ================ Color Scheme ================
+
 let base16colorspace=256
 set background=dark
 colorscheme base16-eighties
+
+
+" ================ Local overwrites  ================
+
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
