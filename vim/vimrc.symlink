@@ -408,7 +408,7 @@ if has('nvim')
   tnoremap <leader>e <C-\><C-n>
 
   " Make a terminal split
-  command! -nargs=* Spt :sp term://zsh
+  command! -nargs=* Spt :8sp term://zsh
   command! -nargs=* Vspt vsp term://zsh
 endif
 
