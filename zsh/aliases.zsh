@@ -1,3 +1,4 @@
+alias cl='clear'
 alias reload!='. ~/.zshrc'
 
 alias .='cd ..'
@@ -19,3 +20,5 @@ alias homestead='function __homestead() { (cd ~/.homestead && vagrant $*); unset
 alias art='php artisan'
 
 alias dev='cd ~/dev'
+alias sites='cd ~/Sites'
+alias code='cd ~/Code'

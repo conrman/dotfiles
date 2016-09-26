@@ -47,6 +47,9 @@ set cmdheight=2
 
 " ================ Mappings  ================
 
+" Lazy Ex commands
+nnoremap ; :
+
 " Quit like a winner
 nnoremap <leader>q :q<CR>
 
@@ -68,7 +71,6 @@ set relativenumber
 set cursorline        " Highlight current line
 
 
-
 " ================ Search ================
 
 set hlsearch          " Better search
@@ -78,6 +80,13 @@ set smartcase         " ...unless we type a captial
 
 " Clear hightlights
 nnoremap <F3> :set hlsearch!<CR>
+
+
+" ================ Folds ============================
+
+" set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
 
 
 " ================ Buffers ================
@@ -103,6 +112,7 @@ set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
+autocmd FileType php setlocal shiftwidth=4 tabstop=4
 
 
 " ================ Splits ================
@@ -182,9 +192,8 @@ autocmd BufReadPost * call s:RemapEnter()
 call plug#begin('~/.vim/autoload')
 
 " Define bundles via Github repos
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/tComment'
 Plug 'itchyny/lightline.vim'
@@ -204,13 +213,18 @@ Plug 'https://github.com/tpope/vim-unimpaired'
 Plug 'https://github.com/tpope/vim-repeat'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
+Plug 'posva/vim-vue'
+Plug 'https://github.com/vim-scripts/CursorLineCurrentWindow'
+Plug 'morhetz/gruvbox'
+Plug 'https://github.com/ap/vim-buftabline'
+Plug 'https://github.com/SirVer/ultisnips'
+Plug 'https://github.com/honza/vim-snippets'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'jwalton512/vim-blade'
+Plug 'metakirby5/codi.vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
-endif
-
-if has('nvim')
-  Plug 'dylanaraps/taskrunner.nvim'
 endif
 
 call plug#end()
@@ -220,8 +234,6 @@ call plug#end()
 
 " Setup github account config for webapi-vim
 let g:gist_use_password_in_gitconfig = 1
-
-
 
 
 " ================ Tagbar ================
@@ -245,19 +257,20 @@ let g:tagbar_type_css = {
       \ ]
       \ }
 
-
-" ================ Syntastic  ================
+" ================ Syntastic ================
 
 " Set checkers for syntastic:
-" let g:syntastic_javascript_checkers = ['eslint', 'jshint']
-" let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+let g:syntastic_css_checkers = ['csslint']
 " let g:syntastic_python_checkers = ['pylint']j
 
 " configure syntastic syntax checking to check on open as well as save
-" let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=1
 " let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " let g:syntastic_eruby_ruby_quiet_messages = {"regex": "possibly useless use of a variable in void context"}
 
+" Toggle Syntastic
+nnoremap <F5> :SyntasticToggleMode<CR>
 
 " ================ Emmet ================
 
@@ -269,7 +282,7 @@ let g:user_emmet_mode='a'
 " ================ Lightline ================
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename'], ['ctrlpmark'] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -403,10 +416,12 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
-
 " ================ NeoVim ================
 
 if has('nvim')
+  " True colors
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
   " Exit terminal mode.
   tnoremap <leader>e <C-\><C-n>
 
@@ -418,13 +433,9 @@ endif
 
 " ================ Color Scheme ================
 
-let base16colorspace=256
+" let base16colorspace=256
 set background=dark
-colorscheme base16-eighties
-
-" Set line number number colors
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight CursorLineNr ctermfg=White
+colorscheme gruvbox
 
 
 " ================ Local overwrites  ================
