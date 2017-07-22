@@ -21,4 +21,3 @@ alias art='php artisan'
 
 alias dev='cd ~/dev'
 alias sites='cd ~/Sites'
-alias code='cd ~/Code'

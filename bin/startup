@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Get to work
+# opens default apps and sets up for working
+
+open /Applications/Mail.app
+open /Applications/Hipchat.app
+open /Applications/Google\ Chrome.app
+open /Applications/MAMP/MAMP.app
+open /Applications/Sublime\ Text.app
+open /Applications/Tower.app
+open /Applications/Sequel\ Pro.app
+opne /Applications/Calendar.app

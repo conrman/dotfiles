@@ -39,3 +39,6 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[user]
+	name = Connor Freeman
+	email = connor_freeman@apple.com

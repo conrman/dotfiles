@@ -45,6 +45,18 @@ unset config_files
 # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # gruvbox pallette
-source "$HOME/.config/nvim/autoload/gruvbox/gruvbox_256palette.sh"
+source "$HOME/.vim/autoload/gruvbox/gruvbox_256palette.sh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# hastebin apple server
+alias ahaste="HASTE_SERVER=http://pastebin.apple.com haste"
+
+# fix for colors in tmux
+export TERM=screen-256color
+
+export ZSH_THEME="gruvbox"
+
+# fix history search in tmux
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
