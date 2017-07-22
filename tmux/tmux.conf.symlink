@@ -101,10 +101,9 @@ set-window-option -g window-status-separator ""
 
 
 # GRUVBOX
-set -g status-left "#[fg=colour238,bg=colour248]  #[fg=colour238,bg=colour248,nobold,nounderscore,noitalics]░"
-set -g status-right "#[fg=colour238,bg=colour237]░#[fg=colour246,bg=colour239] %Y-%m-%d | %H:%M #[fg=colour248,bg=colour239,nobold,nounderscore,noitalics]░#[fg=colour237,bg=colour248] #h "
+set -g status-left "#[fg=colour238,bg=colour248]  #[fg=colour238,bg=colour248,nobold,nounderscore,noitalics]"
 
-setw -g window-status-format '#[fg=colour237,bg=colour239,:nobold,nounderscore,noitalics]#[fg=colour223,bg=colour239] #I |#[fg=colour223,bg=colour239,bold] #(pwd="#{pane_current_path}"; echo ${pwd####*/})#F #[fg=colour240,bg=colour237,nobold,nounderscore,noitalics]'
+setw -g window-status-format '#[fg=colour237,bg=colour238,:nobold,nounderscore,noitalics]#[fg=colour223,bg=colour238] #I |#[fg=colour223,bg=colour238,bold] #(pwd="#{pane_current_path}"; echo ${pwd####*/})#F #[fg=colour240,bg=colour237,nobold,nounderscore,noitalics]'
 setw -g window-status-current-format '#[fg=colour234,bg=colour248,noitalics]#[fg=colour234,bg=colour248] #I |#[fg=colour234,bg=colour248] #(pwd="#{pane_current_path}"; echo ${pwd####*/})#F #[fg=colour234,bg=colour248,noitalic]'
 
 # set -g status-left "#[fg=colour248,bg=colour241] #S #[fg=colour241,bg=colour234,nobold,nounderscore,noitalics]"
