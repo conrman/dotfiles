@@ -20,6 +20,8 @@ set mouse=a           " Enable mouse
 set ruler             " Show the cursor position all the time
 set visualbell        " No sounds
 set noea              " I can resize splits my damn self
+set clipboard=unnamed
+set t_Co=256
 
 " ================ Backups/Swaps ================
 
@@ -239,6 +241,7 @@ Plug 'ryanoasis/vim-devicons'
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'bagrat/vim-workspace'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'jceb/vim-orgmode'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
@@ -494,14 +497,7 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set termguicolors
 
-  " Blinky cursor
-  " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-  " insert mode - line
-  " let &t_SI .= "\<Esc>[5 q"
-  "replace mode - underline
-  " let &t_SR .= "\<Esc>[4 q"
-  "common - block
-  " let &t_EI .= "\<Esc>[3 q"
+  set guicursor="i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150"
 
   " Exit terminal mode.
   tnoremap <leader>e <C-\><C-n>

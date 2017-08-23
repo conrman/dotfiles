@@ -1,0 +1,6 @@
+{ "replacements": {
+        "wnidow" : "window",
+        "dcoument": "document"
+    }
+},
+{ "execute_on_save": true, }

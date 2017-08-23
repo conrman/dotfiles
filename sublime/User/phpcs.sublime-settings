@@ -1,0 +1,9 @@
+{
+    "phpcs_php_path": "/Users/connorfreeman/.composer/vendor/bin/phpcbf",
+    "phpcs_executable_path": "/Users/connorfreeman/.composer/vendor/bin/phpcs",
+    "phpmd_executable_path": "/Users/connorfreeman/.composer/vendor/bin/phpmd",
+    "php_cs_fixer_executable_path": "/Users/connorfreeman/.composer/vendor/bin/php-cs-fixer",
+    "phpcs_show_errors_on_save": false,
+    "phpcs_outline_for_errors": false,
+    "php_cs_fixer_on_save": false
+}

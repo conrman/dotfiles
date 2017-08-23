@@ -1,0 +1,52 @@
+{
+	"bootstrapped": true,
+	"channels":
+	[
+		"https://packagecontrol.io/channel_v3.json"
+	],
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"All Autocomplete",
+		"Block Cursor Everywhere",
+		"Bootstrap 3 Autocomplete",
+		"Bootstrap 3 Snippets",
+		"Color Highlighter",
+		"Comment-Snippets",
+		"Composer",
+		"CSS Unminifier",
+		"DocBlockr",
+		"Dracula Color Scheme",
+		"Emmet",
+		"Fix Mac Path",
+		"gruvbox",
+		"Gruvbox Dark",
+		"Gulp",
+		"Idiomatic-CSS-Comments-Snippets",
+		"Laravel 5 Artisan",
+		"Laravel 5 Snippets",
+		"Laravel Blade Highlighter",
+		"Markdown Preview",
+		"npm",
+		"Package Control",
+		"PackageResourceViewer",
+		"PHP Companion",
+		"Phpcs",
+		"PhpSimpleRefactor",
+		"PHPUnit",
+		"Sass",
+		"Six",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-contrib-sass-lint",
+		"SublimeLinter-html-tidy",
+		"SublimeLinter-php",
+		"SyncedSideBar",
+		"Theme - Spacegray",
+		"VintageousOrigami",
+		"Vue Syntax Highlight"
+	]
+}
