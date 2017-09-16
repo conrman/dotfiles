@@ -494,8 +494,8 @@ let g:vimshell_force_overwrite_statusline = 0
 
 if has('nvim')
   " True colors
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  set termguicolors
+  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  " set termguicolors
 
   set guicursor="i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150"
 
