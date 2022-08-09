@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Get to work
+# opens default apps and sets up for working
+
+open /Applications/Mail.app
+open /Applications/Google\ Chrome.app
+open /Applications/Tower.app
+open /Applications/Sequel\ Ace.app
+open /Applications/Calendar.app
+opne /Applications/iTerm2.app

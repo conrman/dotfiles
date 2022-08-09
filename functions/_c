@@ -1,0 +1,5 @@
+#compdef c
+_files -W $PROJECTS ~/acrbi/projects
+_files -W $TOOLS ~/acrbi/tools
+
+# See further documentation in `functions/c`.

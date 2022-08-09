@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# dotfiles
+#
+# `dotfiles` handles installation, updates, things like that. Run it periodically
+# to make sure you're on the latest and greatest.
+export ZSH=$HOME/.dotfiles
+
+# Set MacOS defaults
+$ZSH/macos/set-defaults.sh
+
+# Install homebrew
+$ZSH/homebrew/install.sh
+
+# Upgrade homebrew
+echo "› brew update"
+brew update
+
+# Install software
+echo "› $ZSH/script/install"
+$ZSH/script/install
+

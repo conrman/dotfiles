@@ -1,0 +1,5 @@
+#!/bin/bash
+
+displayplacer "id:343A40DC-6A01-403B-8D10-F17CFD17F171 res:2560x1440 hz:144 color_depth:7 scaling:off origin:(0,0) degree:0" "id:37D8832A-2D66-02CA-B9F7-8F30A301B230 res:1728x1117 hz:120 color_depth:8 scaling:on origin:(-1728,1440) degree:0" "id:E62037F7-C940-455B-8F6D-BE831557B0F0 res:1440x2560 hz:120 color_depth:8 scaling:off origin:(2560,-564) degree:270"
+
+

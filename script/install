@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Run all dotfiles installers.
+
+set -e
+
+cd "$(dirname $0)"/..
+
+# find the installers and run them iteratively
+echo '› running installers'
+INSTALLERS="$(find . -name install.sh)"
+# echo $INSTALLERS
+for installer in $INSTALLERS; do
+   echo "› $installer"
+   sh -c "${installer}"
+done
+    # while read installer
+    # do
+    #      # why doesn't this work?
+        # sh -c "${installer}"
+        sh -c "lando/install.sh" # TODO: why do I have to do this manually?"
+        sh -c "node/install.sh" # TODO: why do I have to do this manually?"
+        sh -c "php/install.sh" # TODO: why do I have to do this manually?"
+    # done << EOF
